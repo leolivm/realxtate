@@ -1,7 +1,13 @@
 import { Box } from '@chakra-ui/react'
-import { Banner } from 'components/ui/home/Banner'
+import { GetServerSideProps } from 'next'
 
-export default function Home() {
+import { client } from 'lib/apollo'
+import { Banner } from 'components/ui/home/Banner'
+import { FIND_ALL_RENTS_QUERY } from 'gql/findAllRentsQuery'
+
+export default function Home(rents: AllRentsPayload) {
+  console.log(rents)
+
   return (
     <Box>
       <Banner
@@ -27,4 +33,16 @@ export default function Home() {
       />
     </Box>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data } = await client.query<FindAllRentsPayload>({
+    query: FIND_ALL_RENTS_QUERY,
+  })
+
+  return {
+    props: {
+      data: data.findAllRents,
+    },
+  }
 }

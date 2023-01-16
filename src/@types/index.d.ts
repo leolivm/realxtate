@@ -8,3 +8,18 @@ type BannerType = {
   link: string
   buttonText: string
 }
+
+type FindAllRentsPayload = {
+  findAllRents: AllRentsPayload
+}
+
+type AllRentsPayload = {
+  id: string
+  title: string
+  description: string
+  image_url: string
+  contact: string
+  bedrooms: number
+  bathrooms: number
+  square_feets: number
+}[]

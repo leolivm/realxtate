@@ -12,7 +12,7 @@ export function Banner(props: BannerType) {
 
         <Text fontSize="3xl" fontWeight="bold">{props.title}<br />{props.semiTitle}</Text>
 
-        <Text fontSize="lg" pt="3" pb="3" color="gray.700">{props.description}<br />{props.text}</Text>
+        <Text fontSize="sm" pt="3" pb="3" color="gray.700">{props.description}<br />{props.text}</Text>
 
         <Button fontSize="xl" bg="blue.300" color="white">
           <Link href={props.link}>{props.buttonText}</Link>

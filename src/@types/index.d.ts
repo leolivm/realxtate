@@ -10,16 +10,27 @@ type BannerType = {
 }
 
 type FindAllRentsPayload = {
-  findAllRents: AllRentsPayload
+  findAllRents: {
+    id: string
+    title: string
+    description: string
+    image_url: string
+    contact: string
+    bedrooms: number
+    bathrooms: number
+    square_feets: number
+  }[]
 }
 
 type AllRentsPayload = {
-  id: string
-  title: string
-  description: string
-  image_url: string
-  contact: string
-  bedrooms: number
-  bathrooms: number
-  square_feets: number
-}[]
+  rents: {
+    id: string
+    title: string
+    description: string
+    image_url: string
+    contact: string
+    bedrooms: number
+    bathrooms: number
+    square_feets: number
+  }[]
+}

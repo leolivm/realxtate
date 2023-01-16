@@ -1,15 +1,15 @@
-import { Box } from '@chakra-ui/react'
+import { VStack } from '@chakra-ui/react'
 import { GetServerSideProps } from 'next'
 
 import { client } from 'lib/apollo'
 import { Banner } from 'components/ui/home/Banner'
 import { FIND_ALL_RENTS_QUERY } from 'gql/findAllRentsQuery'
 
-export default function Home(rents: AllRentsPayload) {
+export default function Home({ rents }: AllRentsPayload) {
   console.log(rents)
 
   return (
-    <Box>
+    <VStack alignItems="center">
       <Banner
         purpose="ALUGAR UMA CASA"
         title="Casas de aluguel para"
@@ -31,7 +31,7 @@ export default function Home(rents: AllRentsPayload) {
         link="/search?purpose=for-sale"
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
       />
-    </Box>
+    </VStack>
   )
 }
 
@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      data: data.findAllRents,
+      rents: data.findAllRents,
     },
   }
 }
